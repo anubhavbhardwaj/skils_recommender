@@ -8,7 +8,13 @@ from datetime import date
 sys.path.append(os.path.join('../../'))
 import settings
 
+
 def generate_utility_matrix():
+    """
+    1. Loading the raw skills data
+    2. Generate utility matrix
+    Utility Matrix: It's binary representation of jobs and required skill for that job
+    """
     df_jobs = pd.read_csv(os.path.join(settings.PATH_DATA_RAW, 'structured_skills_dataset.csv'))
     
     df_jobs.set_index('Title', inplace=True)
@@ -22,6 +28,11 @@ def generate_utility_matrix():
 
 
 def get_rec_str(top_10, list_skill, skillsDict, finalDF, num_recs):
+    
+    """
+    This function generates the text to be presented in the web app. 
+    """
+    
     fin_str = "Listed below are the top {} recommendations for high-demand technical jobs and the advanced digital skills you need for them:<br>".format(num_recs)
     for i, each in enumerate(top_10):
         df = finalDF.loc[each].values
@@ -38,6 +49,15 @@ def get_rec_str(top_10, list_skill, skillsDict, finalDF, num_recs):
 
 # Finds best jobs/roles and additional skills required for the role    
 def findJobs(ll , skills_list, finalDF , skills_ndx_dict, num_recs=10) :
+    """
+    Once the user enters his/her skills, create a representation like the one in
+    Utility matrix we generated above
+    
+    Find the distance of the new row (with user's skills as input) and all the available jobs.
+    
+    Recommend the jobs with least distance.
+    """
+    
     d = dict() 
     # assert len(ll) == 49 , "Length of input not correct !! " 
     for i , j  in finalDF.iterrows() : 
@@ -49,7 +69,14 @@ def findJobs(ll , skills_list, finalDF , skills_ndx_dict, num_recs=10) :
     return get_rec_str(top_10, skills_list, skills_ndx_dict, finalDF, num_recs)
 
 
-def createSkillDict(finalDF) : 
+def createSkillDict(finalDF) :
+    
+    """
+    Generate a dictionary to maintain the index of skills in original utility matrix
+    When a user enters new skill(s), find them in the dictonary and replace the 0 with 1
+    in user's vector repsentation
+    """
+    
     skills_ndx_dict = dict()
     cnt = 0 
     for i in finalDF.columns : 
@@ -66,16 +93,17 @@ def create_map(list_skills, finalDF, skillsDict):
 
 
 def generate_recs(list_skills, num_recs):
+    """
+    This function runs all the other functions above
+    """
     finalDF = generate_utility_matrix()
     skillsDict = createSkillDict(finalDF) 
     return findJobs(create_map(list_skills, finalDF, skillsDict), list_skills, finalDF, skillsDict, num_recs)
 
 
 def get_all_skills():
-<<<<<<< HEAD
+    """
+    This function populates all the skills in the web app
+    """
     finalDF = generate_utility_matrix()
     return list(finalDF.columns)
-=======
-    finalDF = load_clean_final_df()
-    return list(finalDF.columns)
->>>>>>> 54027b95b5583abfbd734cdff8cdbddd2c2c8e03
