@@ -22,16 +22,16 @@ def generate_utility_matrix():
 
 
 def get_rec_str(top_10, list_skill, skillsDict, finalDF, num_recs):
-    fin_str = "Below are the top <strong>{} recommendations</strong> and skills you need for them: <br>".format(num_recs)
-    for each in top_10:
+    fin_str = "Listed below are the top {} recommendations for high-demand technical jobs and the advanced digital skills you need for them:<br>".format(num_recs)
+    for i, each in enumerate(top_10):
         df = finalDF.loc[each].values
         indices = [{v: k for k, v in skillsDict.items()}[i] for i, x in enumerate(df) if x == 1]
         req_skills = list(set(indices) - set(list_skill))
         
         if not req_skills:
-            fin_str = fin_str + each + ", You don't need any extra skills!<br>" 
+            fin_str = fin_str +str(i+1)+ '. '+ each + ", You don't need any extra skills!<br><br>" 
         else:
-            fin_str = fin_str + each + ", You need the following extra skills: {}".format(str(req_skills)) + "<br>"
+            fin_str = fin_str+str(i+1)+ '. ' + each + ", You need the following extra skills: {}".format(str(req_skills)) + "<br><br>"
             
     return fin_str
 
@@ -72,5 +72,10 @@ def generate_recs(list_skills, num_recs):
 
 
 def get_all_skills():
+<<<<<<< HEAD
     finalDF = generate_utility_matrix()
     return list(finalDF.columns)
+=======
+    finalDF = load_clean_final_df()
+    return list(finalDF.columns)
+>>>>>>> 54027b95b5583abfbd734cdff8cdbddd2c2c8e03
