@@ -1,12 +1,14 @@
 import streamlit as st
 from src.generate_recs import generate_recs, get_all_skills
 
-st.title('Job Recommender!')
+st.title('Job Recommender - V2!')
+
+print (get_all_skills())
 
 options = st.multiselect(
     'Select the skill(s) you have from the list below',
     sorted(get_all_skills()),
-    ['CSS', 'HTML'])
+    ['css', 'css framework'])
 
 number = st.number_input('Enter maximum number of recommendations', min_value=5, max_value=20, value=10)
 

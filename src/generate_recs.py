@@ -8,27 +8,17 @@ from datetime import date
 sys.path.append(os.path.join('../../'))
 import settings
 
-def load_clean_final_df():
-    finalDF = pd.read_csv(os.path.join(settings.PATH_DATA_INTERMEDIATE, 'final_df.csv'))
+def generate_utility_matrix():
+    df_jobs = pd.read_csv(os.path.join(settings.PATH_DATA_RAW, 'structured_skills_dataset.csv'))
     
-    finalDF.rename(columns={'Unnamed: 0': 'job_title'}, inplace=True)
+    df_jobs.set_index('Title', inplace=True)
+    df_jobs = df_jobs.unstack().reset_index(name='skills')
+    df_jobs.drop(columns='level_0', inplace=True)
     
-    finalDF.set_index('job_title', inplace=True)
+    df_jobs['count']=1
+    df_jobs = df_jobs.pivot(index='Title', columns='skills', values='count').fillna(0)
     
-    list_int_cols = []
-    
-    for each in finalDF.columns:
-        if each.isdigit():
-            list_int_cols.append(each)
-    
-    finalDF.drop(columns=list_int_cols, inplace=True)
-    
-    finalDF['sum_all'] = finalDF.sum(axis=1)
-    finalDF = finalDF[finalDF.sum_all != 0]
-    
-    finalDF.drop(columns=['sum_all'], inplace=True)
-    
-    return finalDF
+    return df_jobs
 
 
 def get_rec_str(top_10, list_skill, skillsDict, finalDF, num_recs):
@@ -76,11 +66,11 @@ def create_map(list_skills, finalDF, skillsDict):
 
 
 def generate_recs(list_skills, num_recs):
-    finalDF = load_clean_final_df()
+    finalDF = generate_utility_matrix()
     skillsDict = createSkillDict(finalDF) 
     return findJobs(create_map(list_skills, finalDF, skillsDict), list_skills, finalDF, skillsDict, num_recs)
 
 
 def get_all_skills():
-    finalDF = load_clean_final_df()
+    finalDF = generate_utility_matrix()
     return list(finalDF.columns)

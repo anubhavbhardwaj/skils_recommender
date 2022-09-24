@@ -1,0 +1,24 @@
+html
+css
+javascript
+js framework
+angular
+react
+vue
+css framework
+git version control
+programming language
+java
+python
+php
+c#
+nodejs
+cloud certification
+scripting language
+bash
+powershell
+database language
+any os
+linux
+windows
+
