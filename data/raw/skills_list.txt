@@ -1,24 +1,38 @@
 html
 css
 javascript
-js framework
 angular
 react
 vue
-css framework
-git version control
-programming language
+git 
 java
 python
 php
 c#
-nodejs
-cloud certification
-scripting language
+node.js
+cloud_services
 bash
-powershell
-database language
-any os
+sql
 linux
 windows
+.net
+django
+ado.net
+flask
+express
+spring
+asp.net
+docker
+kubeflow
+apache_kafka
+hibernate
+keras
+tensorflow
+flutter
+graphql
+c++
+redux
+jquery
+symfony
+apache_thrift
 
