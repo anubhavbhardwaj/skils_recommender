@@ -5,11 +5,11 @@ Frontend Developer Vue,html,css,javascript,vue,jquery,git
 Backend Developer Python,python,flask,sql,hibernate,symfony,git
 Backend Developer C#,c#,express,php,keras,apache_kafka,git
 Backend Developer Java,java,spring,windows,tensorflow,apache_thrift,git						
-Fullstack Developer,C#,.net,asp.net,c#,hibernate,keras,git
-Fullstack Developer,Javascript,node.js,express,html,css,javascript,git
-Fullstack Developer,Python,django,python,apache_kafka,flutter,vue,git
-Fullstack Developer,Java,ado.net,java,spring,graphql,flutter,git					
-Linux Cloud Engineer,linux,bash,cloud_services,c++,sql,git
+Fullstack Developer C#,.net,asp.net,c#,hibernate,keras,git
+Fullstack Developer Javascript,node.js,express,html,css,javascript,git
+Fullstack Developer Python,django,python,apache_kafka,flutter,vue,git
+Fullstack Developer Java,ado.net,java,spring,graphql,flutter,git					
+Linux Cloud Engineer linux,bash,cloud_services,c++,sql,git
 Windows Cloud Engineer,windows,node.js,cloud_services,javascript,sql,git
 Cloud Engineer python,linux,bash,cloud_services,python,sql,git
 Cloud Engineer java,windows,docker,cloud_services,java,sql,git
