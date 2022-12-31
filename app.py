@@ -6,7 +6,7 @@ st.title('Job-based Skill Recommender - V2!')
 options = st.multiselect(
     'Select the skill(s) you have from the list below',
     sorted(get_all_skills()),
-    ['css', 'css framework'])
+    ['html', 'css'])
 
 number = st.number_input('Enter maximum number of recommendations', min_value=5, max_value=20, value=10)
 
