@@ -10,7 +10,7 @@ python
 php
 c#
 node.js
-cloud_services
+cloudservices
 bash
 sql
 linux
@@ -24,7 +24,7 @@ spring
 asp.net
 docker
 kubeflow
-apache_kafka
+apachekafka
 hibernate
 keras
 tensorflow
@@ -34,5 +34,5 @@ c++
 redux
 jquery
 symfony
-apache_thrift
+apachethrift
 
